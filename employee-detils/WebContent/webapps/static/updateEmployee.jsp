@@ -15,7 +15,7 @@
 <span>Employee Update Page</span>
 <form action="${contextPath}/updateEmployee?id=${emp.id}" method="post">
 <div>
-Sr : <input type="text" readonly="readonly" value="${emp.id}"><br>
+Sr : <input type="text" readonly="readonly" value="${emp.id}" name = "id"><br>
 Name : <input type="text" id = "name" name="name" value="${emp.name}"/><br>
 Age : <input type="text" id="age" name="age" value="${emp.age}"/><br>
 City : <input type="text" id="city" name="city" value="${emp.city}"/><br>

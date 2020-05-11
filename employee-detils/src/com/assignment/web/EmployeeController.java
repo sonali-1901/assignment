@@ -41,7 +41,6 @@ public class EmployeeController {
 
 	@PostMapping(value = "/searchEmployee")
 	public String searchEmployee(HttpServletRequest request,Model model){
-		System.out.println("search "+request.getParameter("search"));
 		model.addAttribute("list", empService.findAllByName(request.getParameter("search")));
 		return "searchEmployee";
 	}
@@ -52,14 +51,8 @@ public class EmployeeController {
 	}
 
 	@PostMapping(value = "/updateEmployee")
-	public String updateEmployee(HttpServletRequest request,Model model){
-		System.out.println("search "+request.getParameter("id"));
-		Employee emp = empService.findById(Long.parseLong(request.getParameter("id"))).get();
-		emp.setAge(request.getParameter("age"));
-		emp.setName(request.getParameter("name"));
-		emp.setCity(request.getParameter("city"));
-		emp.setContactNumber(request.getParameter("contactNumber"));
-		empService.save(emp);
+	public String updateEmployee(HttpServletRequest request,Model model,Employee requestEmp){
+		empService.save(requestEmp);
 		return "redirect:/";
 	}
 	
