@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,17 +26,8 @@ public class EmployeeController {
 		return "list_view";
 	}
 	@PostMapping(value = "/addEmployee")
-	public String addEmployee(HttpServletRequest request){
-		System.out.println("name "+request.getParameter("name"));
-		System.out.println("age "+request.getParameter("age"));
-		System.out.println("city "+request.getParameter("city"));
-		System.out.println("contactNumber "+request.getParameter("contactNumber"));
-		Employee emp = new Employee();
-		emp.setCity(request.getParameter("name"));
-		emp.setContactNumber(request.getParameter("contactNumber"));
-		emp.setName(request.getParameter("name"));
-		emp.setAge(request.getParameter("age"));
-		empService.save(emp);
+	public String addEmployee(Employee requestEmp){
+		empService.save(requestEmp);
 		return "redirect:/";
 	}
 	@GetMapping(value = "/addEmployee")
