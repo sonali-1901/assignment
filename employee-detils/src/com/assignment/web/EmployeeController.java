@@ -14,6 +14,7 @@ import com.assignment.service.EmployeeService;
 
 @Controller
 public class EmployeeController {
+	
 	@Autowired
 	private EmployeeService empService;
 	@GetMapping(value = "/")
